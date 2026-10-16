@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Seja Chefe do Seu Chefe, livro de Thiago Bagues Drum'on. Compre o livro, o pacote com consultoria ou o pacote para empresas com palestra.">
+<meta property="og:title" content="Seja Chefe do Seu Chefe">
+<meta property="og:description" content="As lições reais de quem aprendeu a vencer no caos. Lançamento em 28 de outubro.">
+<meta property="og:image" content="capa.png">
+<meta property="og:type" content="website">
+<title>Seja Chefe do Seu Chefe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F1F1EE; --surface:#FFFFFF; --ink:#141B2E; --muted:#5B6577; --line:#D7D9DE;
+  --navy:#1B2645; --hero-fg:#EEEDE8; --hero-muted:#A9B1C4; --hero-card:#24315A; --hero-line:#34426E;
+  --amber:#DB8F2E; --amber-ink:#8A5A08; --ok:#2F7A4F; --qr-bg:#FFFFFF;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0E1322; --surface:#161D31; --ink:#E9E8E3; --muted:#9AA3B5; --line:#2A3350;
+  --navy:#0A0F1D; --hero-fg:#EEEDE8; --hero-muted:#98A1B6; --hero-card:#141C33; --hero-line:#26304F;
+  --amber:#E9A043; --amber-ink:#E9A043; --ok:#6CC491; color-scheme:dark;}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.05;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.eyebrow{font-family:var(--f-ui);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.topbar{background:var(--amber);color:#141B2E;font-family:var(--f-ui);font-size:14px;font-weight:600}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:9px}
+.hero{background:var(--navy);color:var(--hero-fg)}
+.hero .wrap{padding-block:44px 52px;display:flex;flex-direction:column;gap:40px}
+.intro{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center}
+.cover{width:200px;max-width:100%;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;overflow:hidden;box-shadow:16px 20px 40px rgba(0,0,0,.45);transform:rotate(-2deg)}
+.cover img{display:block;width:100%;height:100%;object-fit:cover}
+.intro h1{font-size:clamp(40px,7vw,76px);font-weight:850;font-stretch:72%;text-transform:uppercase;letter-spacing:-.01em}
+.intro h1 span{color:var(--amber)}
+.intro .sub{font-style:italic;font-size:20px;color:var(--hero-muted);margin-top:14px;max-width:40ch}
+.intro .by{font-family:var(--f-ui);margin-top:14px;font-size:15px;color:var(--hero-muted)}
+.intro .by b{color:var(--hero-fg)}
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.offer{background:var(--hero-card);border:1.5px solid var(--hero-line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:14px;font-family:var(--f-ui);min-width:0;position:relative}
+.offer.feat{border-color:var(--amber)}
+.tag{position:absolute;top:-12px;left:20px;background:var(--amber);color:#141B2E;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+.offer .o-name{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--hero-muted)}
+.offer h2{font-size:24px;font-weight:750;font-stretch:85%;line-height:1.15}
+.offer .o-price{font-family:var(--f-display);font-weight:800;font-stretch:80%;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.offer .o-price sup{font-size:22px;color:var(--amber)}
+.offer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--hero-muted);flex:1}
+.offer li::before{content:"";display:inline-block;width:10px;height:2px;background:var(--amber);vertical-align:middle;margin-right:10px}
+.offer .o-note{font-size:12px;color:var(--hero-muted)}
+.offer .btn{width:100%}
+.offer .o-alt{font-size:13px;color:var(--hero-muted);line-height:1.45}
+.offer .o-alt a{color:var(--hero-fg);text-underline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-ui);font-weight:700;font-size:16px;letter-spacing:.02em;border:0;border-radius:6px;padding:14px 22px;cursor:pointer;text-decoration:none;transition:transform .15s ease,filter .15s ease;text-align:center}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn-amber{background:var(--amber);color:#141B2E}
+.btn-line{background:transparent;color:var(--hero-fg);border:1.5px solid var(--hero-line)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-wa{background:#1F8A4C;color:#fff}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+section{padding-block:56px}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.sec-head .eyebrow{color:var(--amber-ink)}
+.sec-head h2{font-size:clamp(30px,4.5vw,42px);font-weight:800;font-stretch:78%;text-transform:uppercase}
+.buy{background:var(--surface);border-bottom:1px solid var(--line)}
+.checkout{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:start}
+.col{display:flex;flex-direction:column;gap:24px;min-width:0}
+.group{display:flex;flex-direction:column;gap:10px}
+.label{font-family:var(--f-ui);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:6px;width:max-content}
+.qty button{width:48px;height:48px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;font-family:var(--f-ui)}
+.qty output{min-width:56px;text-align:center;font-family:var(--f-ui);font-weight:700;font-size:20px;font-variant-numeric:tabular-nums}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;font-family:var(--f-ui);font-size:15px;line-height:1.4}
+.opt input{accent-color:var(--amber);margin-top:3px}
+.opt small{display:block;color:var(--muted);font-size:13px}
+.opt:has(input:checked){border-color:var(--amber)}
+.field{display:flex;flex-direction:column;gap:6px;font-family:var(--f-ui);font-size:14px}
+.field input{font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fields .full{grid-column:1/-1}
+.summary{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:2px solid var(--amber);border-bottom:1px solid var(--line);font-family:var(--f-ui)}
+.summary .t{font-family:var(--f-display);font-weight:800;font-stretch:80%;font-size:38px;font-variant-numeric:tabular-nums}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tab{font-family:var(--f-ui);font-size:14px;font-weight:600;padding:10px 14px;border-radius:6px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.panel{border:1.5px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px;font-family:var(--f-ui);font-size:15px}
+.panel h3{font-size:22px;font-weight:750;font-stretch:85%}
+.panel p{color:var(--muted)}
+.pix-grid{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.qr{background:var(--qr-bg);padding:12px;border-radius:6px;width:204px;height:204px;display:grid;place-items:center}
+.qr img,.qr canvas{display:block;max-width:100%}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;word-break:break-all;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;max-height:96px;overflow:auto;color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.note{font-size:13px;color:var(--muted)}
+.pending{background:var(--bg);border:1px dashed var(--line);border-radius:6px;padding:14px;font-size:14px;color:var(--muted)}
+.toast{color:var(--ok);font-weight:600;font-size:14px;min-height:1.2em}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about .text{display:flex;flex-direction:column;gap:16px;max-width:62ch;min-width:0}
+.about blockquote{margin:0 0 4px;font-family:var(--f-display);font-weight:750;font-stretch:80%;font-size:clamp(26px,3.5vw,34px);line-height:1.12}
+.sides{display:flex;flex-direction:column;border-top:2px solid var(--amber);min-width:0}
+.side{padding:18px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.side h3{font-size:22px;font-weight:750;font-stretch:85%}
+.side p{color:var(--muted);font-size:16px}
+.side .eyebrow{color:var(--muted);font-size:12px}
+footer{padding-block:32px;font-family:var(--f-ui);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:860px){.offers{grid-template-columns:1fr;gap:20px}.checkout,.about{grid-template-columns:1fr}}
+@media (max-width:560px){body{font-size:17px}.intro{grid-template-columns:110px 1fr;gap:18px}.cover{width:110px}.intro .sub{font-size:16px}.fields{grid-template-columns:1fr}.pix-grid{grid-template-columns:1fr;justify-items:center}section{padding-block:44px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span>Lançamento oficial · 28 de outubro de 2026</span>
+  <span>Primeira edição limitada a 400 exemplares</span>
+</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="intro">
+      <div class="cover"><img src="capa.png" alt="Capa do livro Seja Chefe do Seu Chefe, de Thiago Bagues Drum'on"></div>
+      <div>
+        <h1>Seja chefe <span>do seu</span> chefe</h1>
+        <p class="sub">As lições reais de quem aprendeu a vencer no caos.</p>
+        <p class="by"><b>Thiago Bagues Drum'on</b> · 197 páginas</p>
+      </div>
+    </div>
+
+    <div class="offers">
+      <article class="offer">
+        <p class="o-name">Livro</p>
+        <h2>Seja Chefe do Seu Chefe</h2>
+        <p class="o-price">R$ 60</p>
+        <ul><li>1 exemplar impresso</li><li>Dedicatória do autor</li><li>Pix, cartão, boleto ou dinheiro</li></ul>
+        <a class="btn btn-line" href="#comprar">Comprar o livro</a>
+      </article>
+
+      <article class="offer feat">
+        <span class="tag">Mais completo</span>
+        <p class="o-name">Livro + consultoria</p>
+        <h2>Livro e 1 hora de consultoria de comunicação</h2>
+        <p class="o-price">R$ 300</p>
+        <ul><li>1 exemplar com dedicatória</li><li>1 hora de consultoria para o seu negócio</li><li>Online ou presencial, com data combinada</li></ul>
+        <a class="btn btn-amber" href="https://mpago.la/1YUJDyu" target="_blank" rel="noopener">Pagar R$ 300</a>
+        <p class="o-alt">Pix, cartão ou boleto pelo Mercado Pago. Depois, <a class="wa-link" data-acao="Comprei o pacote Livro + 1 hora de consultoria. Quero agendar a consultoria." data-corp="1" target="_blank" rel="noopener">agende a consultoria no WhatsApp</a>.</p>
+      </article>
+
+      <article class="offer">
+        <p class="o-name">Para empresas</p>
+        <h2>10 livros e palestra para a sua equipe</h2>
+        <p class="o-price">R$ 1.200<sup>*</sup></p>
+        <ul><li>10 exemplares do livro</li><li>1 palestra com o autor</li><li>Chefes e funcionários na mesma sala</li></ul>
+        <a class="btn btn-line" href="https://mpago.la/2KUEHzn" target="_blank" rel="noopener">Pagar R$ 1.200</a>
+        <p class="o-alt">Prefere conversar antes? <a class="wa-link" data-acao="Tenho interesse no Pacote Empresa: 10 livros + palestra (R$ 1.200)." data-corp="1" target="_blank" rel="noopener">Fale com o autor no WhatsApp</a> para combinar data e local.</p>
+        <p class="o-note">* Custos de deslocamento do palestrante por conta da empresa.</p>
+      </article>
+    </div>
+  </div>
+</header>
+
+<section class="buy" id="comprar">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Só o livro · R$ 60 por exemplar</p><h2>Comprar o livro</h2></div>
+
+    <form class="checkout" id="checkout" novalidate>
+      <div class="col">
+        <div class="group">
+          <span class="label" id="qtyLabel">Quantidade</span>
+          <div class="qty" role="group" aria-labelledby="qtyLabel">
+            <button type="button" id="minus" aria-label="Diminuir quantidade">−</button>
+            <output id="qty" aria-live="polite">1</output>
+            <button type="button" id="plus" aria-label="Aumentar quantidade">+</button>
+          </div>
+        </div>
+        <div class="group">
+          <span class="label">Como você quer receber</span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="entrega" id="ent-lanc" value="Retirar no lançamento (28/10)" checked><span>Retirar no lançamento<small>28 de outubro, com dedicatória do autor</small></span></label>
+            <label class="opt"><input type="radio" name="entrega" id="ent-maos" value="Entrega em mãos (combinar)"><span>Entrega em mãos<small>Combinamos local e horário pelo WhatsApp</small></span></label>
+            <label class="opt"><input type="radio" name="entrega" id="ent-corr" value="Envio pelos Correios"><span>Envio pelos Correios<small>Frete calculado pelo CEP e informado no WhatsApp</small></span></label>
+          </div>
+        </div>
+        <div class="group">
+          <span class="label">Seus dados</span>
+          <div class="fields">
+            <label class="field full">Nome completo<input id="nome" autocomplete="name" placeholder="Como devo escrever na dedicatória?"></label>
+            <label class="field">WhatsApp<input id="fone" type="tel" autocomplete="tel" placeholder="(71) 9 0000-0000"></label>
+            <label class="field">CEP<input id="cep" inputmode="numeric" autocomplete="postal-code" placeholder="Só para envio"></label>
+            <label class="field full" id="endWrap" hidden>Endereço completo<input id="endereco" autocomplete="street-address" placeholder="Rua, número, complemento, bairro, cidade"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="summary"><span><span id="sumQtd">1 exemplar</span> × R$ 60,00</span><span class="t" id="total">R$ 60,00</span></div>
+        <div class="group">
+          <span class="label" id="payLabel">Forma de pagamento</span>
+          <div class="tabs" role="tablist" aria-labelledby="payLabel">
+            <button type="button" class="tab" role="tab" id="tab-pix" aria-controls="p-pix" aria-selected="true">Pix</button>
+            <button type="button" class="tab" role="tab" id="tab-cartao" aria-controls="p-cartao" aria-selected="false">Cartão</button>
+            <button type="button" class="tab" role="tab" id="tab-boleto" aria-controls="p-boleto" aria-selected="false">Boleto</button>
+            <button type="button" class="tab" role="tab" id="tab-dinheiro" aria-controls="p-dinheiro" aria-selected="false">Dinheiro</button>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p-pix" aria-labelledby="tab-pix">
+          <h3>Pague com Pix</h3>
+          <div id="pixReady" class="pix-grid">
+            <div class="qr" id="qr" aria-label="QR Code Pix"></div>
+            <div class="group" style="min-width:0">
+              <p>Abra o app do seu banco, escolha <b>Pix › Ler QR Code</b> ou use o Pix Copia e Cola. O valor já vem preenchido.</p>
+              <div class="code" id="pixCode"></div>
+              <div class="row"><button type="button" class="btn btn-ghost" id="copyPix">Copiar código Pix</button></div>
+              <p class="toast" id="pixToast" aria-live="polite"></p>
+            </div>
+          </div>
+          <p class="note">Depois de pagar, envie o comprovante para confirmar seu pedido.</p>
+          <div class="row"><a class="btn btn-wa wa-link" data-acao="Já paguei via Pix, segue o comprovante." target="_blank" rel="noopener">Enviar comprovante no WhatsApp</a></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p-cartao" aria-labelledby="tab-cartao" hidden>
+          <h3>Cartão de crédito ou débito</h3>
+          <p>Pagamento no ambiente seguro do Mercado Pago. No crédito, é possível parcelar.</p>
+          <div class="row"><a class="btn btn-amber" id="linkCartao" target="_blank" rel="noopener">Pagar com cartão</a></div>
+          <p class="pending multi-note" hidden>Para mais de 5 exemplares, chame no WhatsApp e enviamos o link com o valor total.</p>
+          <p class="note">Depois de pagar, avise no WhatsApp para combinarmos a entrega.</p>
+          <div class="row"><a class="btn btn-wa wa-link" data-acao="Paguei com cartão." target="_blank" rel="noopener">Avisar no WhatsApp</a></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p-boleto" aria-labelledby="tab-boleto" hidden>
+          <h3>Boleto bancário</h3>
+          <p>O boleto é gerado no checkout do Mercado Pago. A compensação leva até 3 dias úteis.</p>
+          <div class="row"><a class="btn btn-amber" id="linkBoleto" target="_blank" rel="noopener">Gerar boleto</a></div>
+          <p class="pending multi-note" hidden>Para mais de 5 exemplares, chame no WhatsApp e enviamos o boleto com o valor total.</p>
+          <div class="row"><a class="btn btn-wa wa-link" data-acao="Quero pagar com boleto." target="_blank" rel="noopener">Pedir boleto no WhatsApp</a></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p-dinheiro" aria-labelledby="tab-dinheiro" hidden>
+          <h3>Dinheiro ou maquininha na hora</h3>
+          <p>Reserve agora e pague no lançamento ou na entrega em mãos, em dinheiro, Pix ou cartão na maquininha.</p>
+          <div class="row"><a class="btn btn-wa wa-link" data-acao="Quero reservar e pagar na entrega." target="_blank" rel="noopener">Reservar pelo WhatsApp</a></div>
+        </div>
+
+        <p class="note" id="waShow"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about">
+    <div class="text">
+      <p class="eyebrow" style="color:var(--amber-ink)">Sobre o livro</p>
+      <blockquote>E se aquilo que você acredita sobre trabalho estiver completamente errado?</blockquote>
+      <p>Durante mais de duas décadas, Thiago Bagues Drum'on acumulou empregos, chefes, erros, conflitos e decisões que pareciam não fazer sentido. Até perceber que havia algo por trás de quase todos os seus fracassos: a dificuldade de compreender pessoas e de ser compreendido por elas.</p>
+      <p><em>Seja Chefe do Seu Chefe</em> é o relato de quem precisou olhar para os próprios erros antes de enxergar os erros do mercado de trabalho, e descobriu que a comunicação pode ser escudo, máscara e caminho.</p>
+    </div>
+    <div class="sides">
+      <div class="side"><p class="eyebrow">Para funcionários</p><h3>Você trabalha muito e avança pouco.</h3><p>Entenda por que esforço sem comunicação vira invisibilidade.</p></div>
+      <div class="side"><p class="eyebrow">Para chefes</p><h3>Você lidera e não consegue ser seguido.</h3><p>Descubra o que falta no que você diz e no que você ouve.</p></div>
+      <div class="side"><p class="eyebrow">O autor</p><h3>Thiago Bagues Drum'on</h3><p>Estrategista de posicionamento, com trajetória no jornalismo e na música. Foi o pior funcionário, virou chefe e transformou o erro em método.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>Seja Chefe do Seu Chefe · Thiago Bagues Drum'on</span>
+  <span>1ª edição · 197 páginas · 400 exemplares</span>
+</div></footer>
+
+<script>
+const CONFIG = {
+  preco: 60,
+  pixChave: "futreinamentosecomunicacao@gmail.com",
+  pixNome: "THIAGO SOUZA BAGUES",
+  pixCidade: "SEABRA",
+  links: {1:"https://mpago.la/1TSWp7B", 2:"https://mpago.la/1v2RMVn", 3:"https://mpago.la/1nFFCuz", 4:"https://mpago.la/2JrdirQ", 5:"https://mpago.la/1R4AeWh"},
+  whatsapp: "5571999157093"
+};
+
+const $ = id => document.getElementById(id);
+const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const ascii = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^A-Za-z0-9 .@+\-_]/g,"").trim();
+let qty = 1, metodo = "pix";
+
+function tlv(id, v){ return id + String(v.length).padStart(2,"0") + v; }
+function crc16(s){
+  let c = 0xFFFF;
+  for (let i=0;i<s.length;i++){ c ^= s.charCodeAt(i) << 8;
+    for (let j=0;j<8;j++){ c = (c & 0x8000) ? ((c<<1) ^ 0x1021) : (c<<1); c &= 0xFFFF; } }
+  return c.toString(16).toUpperCase().padStart(4,"0");
+}
+function pixPayload(chave, nome, cidade, valor, txid){
+  const conta = tlv("00","br.gov.bcb.pix") + tlv("01", chave.trim());
+  const p = tlv("00","01") + tlv("26",conta) + tlv("52","0000") + tlv("53","986")
+        + tlv("54", valor.toFixed(2)) + tlv("58","BR")
+        + tlv("59", ascii(nome).slice(0,25)) + tlv("60", ascii(cidade).slice(0,15))
+        + tlv("62", tlv("05", txid)) + "6304";
+  return p + crc16(p);
+}
+function renderPix(){
+  const code = pixPayload(CONFIG.pixChave, CONFIG.pixNome, CONFIG.pixCidade, qty*CONFIG.preco, "SEJACHEFE" + qty);
+  $("pixCode").textContent = code;
+  $("qr").innerHTML = "";
+  if (window.QRCode) new QRCode($("qr"), {text: code, width: 180, height: 180, colorDark:"#000000", colorLight:"#FFFFFF", correctLevel: QRCode.CorrectLevel.M});
+  else $("qr").textContent = "Use o código Pix Copia e Cola";
+}
+
+function entregaTxt(){ return document.querySelector('input[name="entrega"]:checked').value; }
+function metodoTxt(){ return {pix:"Pix",cartao:"Cartão",boleto:"Boleto",dinheiro:"Dinheiro / na entrega"}[metodo]; }
+function waMessage(acao, curto){
+  const n = $("nome").value.trim(), f = $("fone").value.trim();
+  if (curto) return `Olá, Thiago! ${acao}`;
+  const l = ["Olá, Thiago! Quero comprar o livro *Seja Chefe do Seu Chefe*.",
+    `Quantidade: ${qty}`, `Total: ${brl(qty*CONFIG.preco)}`, `Pagamento: ${metodoTxt()}`, `Entrega: ${entregaTxt()}`];
+  if (n) l.push(`Nome: ${n}`);
+  if (f) l.push(`WhatsApp: ${f}`);
+  if ($("cep").value.trim()) l.push(`CEP: ${$("cep").value.trim()}`);
+  if (!$("endWrap").hidden && $("endereco").value.trim()) l.push(`Endereço: ${$("endereco").value.trim()}`);
+  l.push("", acao);
+  return l.join("\n");
+}
+function setLink(a, href){
+  if (href){ a.href = href; a.removeAttribute("aria-disabled"); }
+  else { a.removeAttribute("href"); a.setAttribute("aria-disabled","true"); }
+}
+
+function update(){
+  $("qty").textContent = qty;
+  $("sumQtd").textContent = qty + (qty>1 ? " exemplares" : " exemplar");
+  $("total").textContent = brl(qty*CONFIG.preco);
+  $("endWrap").hidden = !$("ent-corr").checked;
+  const wa = CONFIG.whatsapp.replace(/\D/g,"");
+  document.querySelectorAll(".wa-link").forEach(a=>{
+    setLink(a, `https://wa.me/${wa}?text=${encodeURIComponent(waMessage(a.dataset.acao, a.dataset.corp))}`);
+  });
+  $("waShow").textContent = `WhatsApp do autor: +55 (71) 99915-7093`;
+  const mp = CONFIG.links[qty] || "";
+  $("linkCartao").textContent = `Pagar ${brl(qty*CONFIG.preco)} com cartão`;
+  $("linkBoleto").textContent = `Gerar boleto de ${brl(qty*CONFIG.preco)}`;
+  setLink($("linkCartao"), mp); $("linkCartao").parentElement.hidden = !mp;
+  setLink($("linkBoleto"), mp); $("linkBoleto").parentElement.hidden = !mp;
+  document.querySelectorAll(".multi-note").forEach(n=>{ n.hidden = !!mp; });
+  renderPix();
+}
+
+$("minus").onclick = ()=>{ if (qty>1){ qty--; update(); } };
+$("plus").onclick  = ()=>{ if (qty<50){ qty++; update(); } };
+document.querySelectorAll('input[name="entrega"]').forEach(r=>r.addEventListener("change",update));
+["nome","fone","cep","endereco"].forEach(id=>$(id).addEventListener("input",update));
+$("checkout").addEventListener("submit",e=>e.preventDefault());
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(o=>{ const on = o===t; o.setAttribute("aria-selected", on); $(o.getAttribute("aria-controls")).hidden = !on; });
+  metodo = t.id.replace("tab-",""); update();
+}));
+$("copyPix").addEventListener("click",()=>{
+  const code = $("pixCode").textContent;
+  const done = ()=>{ $("pixToast").textContent = "Código copiado. Cole no app do seu banco."; };
+  const fallback = ()=>{ const r=document.createRange(); r.selectNodeContents($("pixCode")); const s=getSelection(); s.removeAllRanges(); s.addRange(r);
+    $("pixToast").textContent = "Código selecionado. Use Copiar no seu aparelho."; };
+  try { navigator.clipboard.writeText(code).then(done, fallback); } catch(e){ fallback(); }
+});
+update();
+</script>
+</body>
+</html>
